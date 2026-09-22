@@ -1,0 +1,957 @@
+
+Claude a terminé sa réponse.
+me entregue um html com um conteudo gamificado e explicativo dos principais vocabularios e gramatica do A0 ao B1 de ingles, para desenvolver conversas simples em contextos de fazerr uma compra, pedir informaçao, reserva de hotel e aeroporto
+
+Lire 2 fichiers, fichier créé, a exécuté une commande
+
+Passaporte do Inglês: A0 ao B1 para viajar
+Artefact·Vous uniquement 
+Criei o Passaporte do Inglês, uma página interativa que organiza o conteúdo como uma viagem. Um painel de embarque tem cinco destinos:
+
+✈️ Aeroporto: check-in, bagagem, assento, portão, atrasos e alfândega.
+🏨 Hotel: reserva, tipos de quarto, café da manhã, Wi-Fi e problemas no quarto.
+🗺️ Pedindo informação: direções, distâncias, preposições de lugar e transporte.
+🛍️ Compras: preço, tamanhos, provador, pagamento e troca.
+🧭 Trilha de gramática: 18 estruturas organizadas de A0 a B1. Vai do verbo to be e dos pedidos com can até o present perfect, as perguntas indiretas, o first conditional e a voz passiva. Você pode filtrar por nível.
+Cada destino tem quatro abas:
+
+Vocabulário: flashcards que viram, com áudio e frase de exemplo.
+Gramática: explicação em português, fórmula, exemplos com áudio e a armadilha mais comum para quem fala português.
+Diálogo: uma conversa-modelo com tradução opcional. Um modo "esconder minhas falas" deixa você treinar dizendo suas falas em voz alta.
+Desafio: perguntas de múltipla escolha e de montar frases, com explicação depois de cada resposta.
+A parte de jogo funciona com pontos de experiência (XP) por palavra aprendida, estrutura entendida, diálogo ouvido e resposta certa, com bônus quando você acerta várias seguidas. Você sobe de nível, de "Turista iniciante" até "Cidadão do mundo". Quem faz 70% ou mais no desafio ganha um carimbo no passaporte. O progresso fica salvo no seu navegador.
+
+O áudio usa a voz do próprio navegador, então a qualidade varia de um aparelho para outro. No Chrome e no Safari costuma soar bem.
+
+me entregue o html pra eu incorporar no github
+
+Presented file
+Presented file
+Arquivo abaixo. É um único HTML autocontido (sem dependências externas além do Google Fonts e da voz do navegador), então basta subir esse arquivo no seu repositório — por exemplo como index.html num repo do GitHub Pages, ou dentro de uma pasta /docs, para ficar acessível como página.
+
+
+Passaporte ingles
+Code·HTML 
+
+
+
+Claude est une IA et peut commettre des erreurs.
+
+
+Passaporte ingles · HTML
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Passaporte do Inglês: do A0 ao B1 para viajar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Big+Shoulders+Display:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EEF2F6; --surface:#FFFFFF; --ink:#1C2B3A; --muted:#566779; --line:#D3DBE4;
+  --board:#1C2B3A; --board-row:#243649; --board-text:#E9EEF3; --sign:#FFC72C; --sign-ink:#1C2B3A;
+  --blue:#2F52C8; --red:#C23B2E; --green:#1E7F55; --purple:#7A3FA8; --teal:#0F7C8C;
+  --ok-bg:#E1F3EA; --bad-bg:#FBE6E2;
+  --display:"Big Shoulders Display","Arial Narrow","Roboto Condensed",sans-serif;
+  --body:"Atkinson Hyperlegible","Segoe UI",system-ui,-apple-system,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F1720; --surface:#17222E; --ink:#E7EDF3; --muted:#9AAABB; --line:#2A3A4B;
+    --board:#0A1119; --board-row:#152130; --board-text:#E9EEF3;
+    --blue:#8AA0F2; --red:#F08A7A; --green:#56C792; --purple:#BD95E6; --teal:#4CC3D2;
+    --ok-bg:#12342A; --bad-bg:#3B1D19;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F1720; --surface:#17222E; --ink:#E7EDF3; --muted:#9AAABB; --line:#2A3A4B;
+  --board:#0A1119; --board-row:#152130; --board-text:#E9EEF3;
+  --blue:#8AA0F2; --red:#F08A7A; --green:#56C792; --purple:#BD95E6; --teal:#4CC3D2;
+  --ok-bg:#12342A; --bad-bg:#3B1D19;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer;min-height:44px}
+:focus-visible{outline:3px solid var(--sign);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+img{max-width:100%}
+ 
+/* Top bar */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0 8px;flex-wrap:wrap}
+.brand{font-family:var(--display);font-weight:900;font-size:26px;letter-spacing:.01em;display:flex;align-items:center;gap:10px}
+.brand .dot{width:30px;height:30px;border-radius:50%;background:var(--sign);display:grid;place-items:center;font-size:16px}
+.xpbox{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:8px 14px}
+.xpbox .rank{font-weight:700}
+.xpbox .xpnum{font-family:var(--display);font-weight:800;font-size:24px;line-height:1}
+.xpbar{width:120px;height:8px;background:var(--line);border-radius:8px;overflow:hidden}
+.xpbar i{display:block;height:100%;background:var(--sign);border-radius:8px;transition:width .4s}
+.small{font-size:14px;color:var(--muted)}
+ 
+/* Hero */
+.hero{padding:28px 0 18px;display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:end}
+.hero h1{font-family:var(--display);font-weight:900;font-size:clamp(46px,8vw,92px);line-height:.9;margin:0;letter-spacing:-.01em}
+.hero p{margin:14px 0 0;max-width:52ch;color:var(--muted);font-size:18px}
+.levels{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.lvl{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px}
+.lvl b{font-family:var(--display);font-size:26px;display:block;line-height:1}
+.lvl span{font-size:13px;color:var(--muted);line-height:1.3;display:block;margin-top:4px}
+ 
+/* Departure board */
+.board{background:var(--board);color:var(--board-text);border-radius:18px;padding:18px;margin:10px 0 30px}
+.board-head{display:flex;justify-content:space-between;align-items:baseline;padding:0 6px 12px;gap:10px;flex-wrap:wrap}
+.board-head h2{font-family:var(--display);font-weight:800;font-size:30px;margin:0;color:var(--sign)}
+.board-head .clock{font-family:var(--display);font-size:26px;font-weight:700;color:var(--sign)}
+.row{display:grid;grid-template-columns:60px 1.4fr 1fr 1fr auto;gap:14px;align-items:center;background:var(--board-row);border-radius:10px;padding:12px 14px;margin-top:6px}
+.row .gate{font-family:var(--display);font-size:30px;font-weight:900;color:var(--sign);text-align:center}
+.row .dest b{font-family:var(--display);font-size:28px;font-weight:800;display:block;line-height:1;color:var(--sign)}
+.row .dest span{font-size:14px;opacity:.8}
+.row .info{font-size:14px;opacity:.85}
+.status{font-family:var(--display);font-weight:700;font-size:20px}
+.status.s0{color:#9FB3C8}.status.s1{color:var(--sign)}.status.s2{color:#63D69C}
+.board .go{background:var(--sign);color:var(--sign-ink);border:0;border-radius:10px;padding:8px 18px;font-weight:700}
+.board .go:hover{filter:brightness(1.07)}
+.flap{display:inline-block;animation:flap .55s cubic-bezier(.3,1.4,.5,1) both;transform-origin:50% 50%}
+@keyframes flap{0%{transform:rotateX(90deg);opacity:0}100%{transform:none;opacity:1}}
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr}
+  .row{grid-template-columns:48px 1fr auto;grid-template-areas:"g d b" "g i s"}
+  .row .gate{grid-area:g}.row .dest{grid-area:d}.row .info{grid-area:i}.row .status{grid-area:s;font-size:17px;text-align:right}.row .go{grid-area:b}
+}
+ 
+/* Passport */
+.passport{display:grid;grid-template-columns:260px 1fr;gap:0;background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-bottom:40px}
+.passport .cover{background:#5B1F2A;color:#F2D58A;padding:24px;display:flex;flex-direction:column;justify-content:space-between;gap:18px}
+.passport .cover h3{font-family:var(--display);font-size:34px;font-weight:900;margin:0;line-height:.95}
+.passport .cover p{margin:0;font-size:14px;color:#EBD9B0}
+.passport .cover .reset{background:transparent;border:1px solid #C9A95F;color:#F2D58A;border-radius:10px;font-size:14px;padding:6px 12px;align-self:flex-start}
+.stamps{padding:22px;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px;background-image:repeating-linear-gradient(0deg,transparent 0 27px,var(--line) 27px 28px)}
+.slot{aspect-ratio:1;border:2px dashed var(--line);border-radius:50%;display:grid;place-items:center;text-align:center;font-size:13px;color:var(--muted);padding:14px;background:var(--surface)}
+.stamp{aspect-ratio:1;border-radius:50%;border:4px double currentColor;display:grid;place-items:center;text-align:center;padding:14px;transform:rotate(var(--r,-8deg));background:var(--surface)}
+.stamp b{font-family:var(--display);font-size:24px;font-weight:900;line-height:.95;display:block}
+.stamp span{font-size:11px;font-weight:700;display:block;margin-top:4px}
+.stamp.new{animation:thump .5s ease-out}
+@keyframes thump{0%{transform:scale(1.6) rotate(0);opacity:0}70%{transform:scale(.95) rotate(var(--r,-8deg));opacity:1}100%{transform:rotate(var(--r,-8deg))}}
+@media (max-width:760px){.passport{grid-template-columns:1fr}}
+ 
+/* Module view */
+.modhead{padding:22px 0 8px}
+.back{background:transparent;border:1px solid var(--line);border-radius:10px;padding:6px 14px;font-size:15px}
+.modtitle{display:flex;align-items:flex-end;gap:16px;margin-top:16px;flex-wrap:wrap}
+.modtitle h2{font-family:var(--display);font-weight:900;font-size:clamp(40px,7vw,70px);line-height:.9;margin:0}
+.modtitle .en{font-family:var(--display);font-size:24px;font-weight:700;color:var(--accent);padding-bottom:6px}
+.modintro{color:var(--muted);max-width:62ch;margin:10px 0 0}
+.tabs{display:flex;gap:6px;margin:22px 0 18px;border-bottom:2px solid var(--line);overflow-x:auto}
+.tab{background:none;border:0;border-bottom:4px solid transparent;margin-bottom:-2px;padding:8px 14px;font-weight:700;color:var(--muted);white-space:nowrap}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.panel{padding-bottom:60px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+.btn{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 14px;font-weight:700;font-size:15px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn:disabled{opacity:.55;cursor:default}
+.say{background:none;border:1px solid var(--line);border-radius:50%;width:40px;height:40px;min-height:40px;display:inline-grid;place-items:center;font-size:17px;flex:none;padding:0}
+.say:hover{border-color:var(--accent)}
+ 
+/* Flashcards */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.flash{perspective:900px;height:220px}
+.flash .inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.flash.flipped .inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.face.back{transform:rotateY(180deg);border-color:var(--accent)}
+.flash.learned .face.front{border-left:6px solid var(--green)}
+.face .word{font-family:var(--display);font-size:32px;font-weight:800;line-height:1;margin:0}
+.face .pt{font-weight:700;font-size:19px;margin:0}
+.face .ex{font-style:italic;font-size:15px;margin:0;flex:1}
+.face .actions{display:flex;gap:8px;align-items:center;margin-top:auto}
+.face .actions .btn{flex:1;padding:6px 10px;font-size:14px}
+.face .hint{font-size:13px;color:var(--muted);margin:0;flex:1}
+.face .done{color:var(--green);font-weight:700;font-size:14px}
+ 
+/* Grammar */
+.lvlfilter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.gram{display:grid;gap:14px}
+.gcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;display:grid;grid-template-columns:70px 1fr;gap:16px}
+.badge{font-family:var(--display);font-weight:900;font-size:30px;width:62px;height:62px;border-radius:12px;display:grid;place-items:center;color:#fff}
+.b-A0{background:#5C7A99}.b-A1{background:var(--teal)}.b-A2{background:var(--blue)}.b-B1{background:var(--purple)}
+.gcard h3{margin:0 0 6px;font-size:21px}
+.gcard p{margin:0 0 10px;max-width:70ch}
+.formula{background:var(--paper);border-left:4px solid var(--accent);border-radius:6px;padding:10px 14px;font-weight:700;margin:0 0 12px;font-size:16px}
+.ex-list{list-style:none;margin:0 0 12px;padding:0;display:grid;gap:8px}
+.ex-list li{display:flex;gap:10px;align-items:center}
+.ex-list .en{font-weight:700}
+.ex-list .ptx{color:var(--muted);font-size:15px}
+.tip{font-size:15px;background:color-mix(in srgb,var(--sign) 22%,transparent);border-radius:8px;padding:8px 12px;margin:0 0 12px}
+@media (max-width:560px){.gcard{grid-template-columns:1fr}}
+ 
+/* Dialogue */
+.chat{display:grid;gap:10px;max-width:720px}
+.line{display:flex;gap:10px;align-items:flex-start}
+.line.you{flex-direction:row-reverse}
+.bubble{background:var(--surface);border:1px solid var(--line);border-radius:16px 16px 16px 4px;padding:10px 14px;max-width:80%}
+.line.you .bubble{background:var(--accent);border-color:var(--accent);color:#fff;border-radius:16px 16px 4px 16px}
+.bubble .who{font-size:12px;font-weight:700;opacity:.75;display:block}
+.bubble .t-en{font-weight:700;display:block}
+.bubble .t-pt{display:none;font-size:15px;opacity:.85;margin-top:2px}
+.chat.showpt .t-pt{display:block}
+.line.speaking .bubble{outline:3px solid var(--sign)}
+.chat.hideyou .line.you:not(.revealed) .t-en{filter:blur(7px);user-select:none}
+.chat.hideyou .line.you:not(.revealed) .bubble{cursor:pointer}
+ 
+/* Quiz */
+.quiz{max-width:720px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px}
+.qmeta{display:flex;justify-content:space-between;gap:10px;font-size:14px;color:var(--muted);margin-bottom:8px;flex-wrap:wrap}
+.combo{font-weight:700;color:var(--red)}
+.qbar{height:8px;background:var(--line);border-radius:8px;overflow:hidden;margin-bottom:20px}
+.qbar i{display:block;height:100%;background:var(--accent);transition:width .3s}
+.qtext{font-size:21px;font-weight:700;margin:0 0 18px;line-height:1.35}
+.opts{display:grid;gap:10px}
+.opt{text-align:left;background:var(--paper);border:2px solid var(--line);border-radius:12px;padding:12px 16px;font-size:17px}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt.right{background:var(--ok-bg);border-color:var(--green)}
+.opt.wrong{background:var(--bad-bg);border-color:var(--red)}
+.opt:disabled{cursor:default}
+.built{min-height:60px;border:2px dashed var(--line);border-radius:12px;padding:10px;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;align-items:center}
+.built.right{border-style:solid;border-color:var(--green);background:var(--ok-bg)}
+.built.wrong{border-style:solid;border-color:var(--red);background:var(--bad-bg)}
+.pool{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.chip{background:var(--surface);border:2px solid var(--line);border-radius:10px;padding:6px 12px;font-weight:700;min-height:40px}
+.chip:hover:not(:disabled){border-color:var(--accent)}
+.built .chip{background:var(--paper)}
+.feedback{margin-top:16px;border-radius:12px;padding:12px 16px}
+.feedback.ok{background:var(--ok-bg)}.feedback.no{background:var(--bad-bg)}
+.feedback b{display:block}
+.qnav{display:flex;justify-content:flex-end;gap:10px;margin-top:16px}
+.result{text-align:center}
+.result .big{font-family:var(--display);font-size:80px;font-weight:900;line-height:1;margin:6px 0}
+.result .stamp{width:170px;margin:18px auto;color:var(--accent)}
+ 
+/* Toast */
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--ink);color:var(--paper);padding:10px 18px;border-radius:12px;font-weight:700;opacity:0;transition:.3s;pointer-events:none;z-index:10;max-width:90vw;text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.hidden{display:none!important}
+.note{font-size:14px;color:var(--muted);margin:0 0 14px}
+footer{padding:10px 0 40px;font-size:14px;color:var(--muted)}
+ 
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="topbar">
+    <div class="brand"><span class="dot" aria-hidden="true">✈</span>Passaporte do Inglês</div>
+    <div class="xpbox" aria-live="polite">
+      <div>
+        <div class="rank" id="rankName">Turista iniciante</div>
+        <div class="small" id="rankNext">100 XP para o próximo nível</div>
+      </div>
+      <div class="xpbar" aria-hidden="true"><i id="xpFill" style="width:0"></i></div>
+      <div class="xpnum" id="xpNum">0 XP</div>
+    </div>
+  </header>
+ 
+  <main id="app"></main>
+  <footer>Toque em 🔊 para ouvir a pronúncia (usa a voz do seu navegador). Seu progresso fica salvo neste navegador.</footer>
+</div>
+<div class="toast" id="toast" role="status"></div>
+ 
+<script>
+/* ============ CONTEÚDO ============ */
+const GRAMMAR = [
+ {id:"be",lvl:"A0",t:"Verbo to be (ser e estar)",
+  exp:"É o verbo mais usado numa viagem: dizer quem você é, de onde vem e como está. Em inglês, ser e estar são o mesmo verbo.",
+  form:"I am / you, we, they are / he, she, it is",
+  ex:[["I'm from Brazil.","Sou do Brasil."],["We are in room 405.","Estamos no quarto 405."],["Is the museum open?","O museu está aberto?"]],
+  tip:"Para perguntar, inverta: You are → Are you...? Para negar, acrescente not: I'm not tired."},
+ {id:"courtesy",lvl:"A0",t:"Frases de cortesia",
+  exp:"Blocos prontos que resolvem a maior parte das situações. Decore como frases inteiras, sem analisar a gramática.",
+  form:"Excuse me (com licença) / Sorry (desculpa) / Please (por favor) / Thank you (obrigado)",
+  ex:[["Excuse me, where is the exit?","Com licença, onde fica a saída?"],["Sorry, I don't understand.","Desculpe, não entendi."],["Could you repeat that, please?","Pode repetir, por favor?"],["Can you speak more slowly?","Pode falar mais devagar?"]],
+  tip:"Excuse me vem antes de interromper alguém. Sorry vem depois de um erro ou quando você não entendeu."},
+ {id:"demonstr",lvl:"A0",t:"This, that, these, those",
+  exp:"Servem para apontar coisas. This e these indicam algo perto de você; that e those, algo longe. These e those são plural.",
+  form:"this + singular / these + plural (perto) — that + singular / those + plural (longe)",
+  ex:[["How much is this bag?","Quanto custa esta bolsa?"],["I like those shoes.","Gosto daqueles sapatos."],["Is that our gate?","Aquele é o nosso portão?"]],
+  tip:"Para não repetir o nome da coisa, use one ou ones: I'll take this one."},
+ {id:"wh",lvl:"A0",t:"Perguntas com Wh-",
+  exp:"A palavra interrogativa abre a pergunta. Depois vem o verbo auxiliar (is, are, do, does, can) e só então o sujeito.",
+  form:"What (o quê) / Where (onde) / When (quando) / What time (que horas) / How much (quanto custa) / How long (quanto tempo)",
+  ex:[["Where is the bathroom?","Onde fica o banheiro?"],["What time is breakfast?","Que horas é o café da manhã?"],["How much is a ticket?","Quanto custa um bilhete?"],["How long does it take?","Quanto tempo leva?"]],
+  tip:"How much é para preço e coisas incontáveis. How many é para coisas contáveis: How many bags?"},
+ {id:"present",lvl:"A1",t:"Present simple",
+  exp:"Para rotinas, fatos e horários fixos, como voos, ônibus e lojas. Com he, she e it, o verbo ganha -s.",
+  form:"I, you, we, they leave / he, she, it leaves — pergunta: Do / Does + sujeito + verbo",
+  ex:[["The bus leaves at 8.","O ônibus sai às 8."],["What time does the flight leave?","A que horas o voo sai?"],["The shop doesn't open on Sundays.","A loja não abre aos domingos."]],
+  tip:"Depois de does, o verbo volta ao normal: Does it leave? (e não “does it leaves”)."},
+ {id:"thereis",lvl:"A1",t:"There is / There are",
+  exp:"É o “tem” ou “há” de existência. Muito útil para perguntar se algo existe por perto ou reclamar de algo que falta.",
+  form:"There is + singular / There are + plural — Is there...? Are there...? — There isn't / There aren't any...",
+  ex:[["Is there a pharmacy near here?","Tem uma farmácia aqui perto?"],["There aren't any towels in my room.","Não tem toalhas no meu quarto."],["There's a problem with my key card.","Tem um problema com meu cartão-chave."]],
+  tip:"Não use have para existência. “Have a bank here?” está errado; o certo é Is there a bank here?"},
+ {id:"can",lvl:"A1",t:"Can para pedidos e possibilidade",
+  exp:"O jeito mais simples de pedir algo ou perguntar se é possível. Não muda com a pessoa, e o verbo seguinte vem sem to.",
+  form:"Can I + verbo...? (posso?) / Can you + verbo...? (você pode?)",
+  ex:[["Can I pay by card?","Posso pagar com cartão?"],["Can you help me?","Pode me ajudar?"],["Can I have a window seat?","Pode me dar um assento na janela?"]],
+  tip:"Can I have...? é a forma natural de pedir algo. Soa muito mais educado que I want."},
+ {id:"imper",lvl:"A1",t:"Imperativo para instruções",
+  exp:"Direções e instruções usam o verbo puro, sem sujeito. Não é grosseiro: é o padrão em inglês.",
+  form:"Verbo + complemento / Don't + verbo",
+  ex:[["Turn left at the bank.","Vire à esquerda no banco."],["Go straight ahead.","Siga em frente."],["Don't forget your passport.","Não esqueça o passaporte."]],
+  tip:"Quando for você pedindo, acrescente please para suavizar: Wait a moment, please."},
+ {id:"prep",lvl:"A1",t:"Preposições de lugar",
+  exp:"São elas que dizem onde as coisas estão. Você vai ouvir essas palavras em toda resposta de direção.",
+  form:"next to (ao lado) / opposite (em frente, do outro lado) / between (entre) / on the corner (na esquina) / near (perto) / behind (atrás)",
+  ex:[["The café is next to the hotel.","O café fica ao lado do hotel."],["The bus stop is opposite the pharmacy.","O ponto fica em frente à farmácia."],["It's between the bank and the post office.","Fica entre o banco e os correios."]],
+  tip:"In front of é na frente, do mesmo lado. Opposite é do outro lado da rua."},
+ {id:"past",lvl:"A2",t:"Past simple",
+  exp:"Para contar o que já aconteceu: ontem, na semana passada, no voo. Verbos regulares ganham -ed; os irregulares têm forma própria.",
+  form:"booked, arrived, asked / went, had, lost, paid, left — did / didn't + verbo normal",
+  ex:[["I booked a room online.","Reservei um quarto online."],["My suitcase didn't arrive.","Minha mala não chegou."],["Did you pay at the desk?","Você pagou no balcão?"]],
+  tip:"Depois de did, o verbo volta ao normal: Did you go? (e não “did you went”)."},
+ {id:"future",lvl:"A2",t:"Will e going to",
+  exp:"Will é para decisões tomadas na hora e promessas. Going to é para planos que você já tinha.",
+  form:"I'll + verbo (decidi agora) / I'm going to + verbo (já estava planejado)",
+  ex:[["I'll take it.","Vou levar."],["I'll call you back.","Eu te ligo de volta."],["We're going to visit the museum tomorrow.","Vamos visitar o museu amanhã."]],
+  tip:"Numa loja, I'll take it é a frase que fecha a compra."},
+ {id:"compar",lvl:"A2",t:"Comparativos",
+  exp:"Para pedir algo mais barato, maior ou melhor, e comparar opções de hotel, voo ou produto.",
+  form:"curtos: + er (cheaper, bigger) / longos: more + adjetivo (more expensive) / irregulares: good → better, bad → worse",
+  ex:[["Do you have a cheaper one?","Tem um mais barato?"],["This room is bigger than the other.","Este quarto é maior que o outro."],["Is there a better option?","Tem uma opção melhor?"]],
+  tip:"Than significa “do que”: cheaper than, more comfortable than."},
+ {id:"polite",lvl:"A2",t:"Pedidos educados: could, would, I'd like",
+  exp:"Um degrau acima do can. Soa mais gentil e é perfeito para hotel, restaurante e atendimento.",
+  form:"Could you + verbo...? / Would you like...? (oferta) / I'd like + coisa, ou I'd like to + verbo",
+  ex:[["I'd like to book a room.","Gostaria de reservar um quarto."],["Could you call a taxi for me?","Poderia chamar um táxi para mim?"],["Would you like a window seat?","Gostaria de um assento na janela?"]],
+  tip:"I'd é a contração de I would. I'd like substitui I want em quase tudo."},
+ {id:"perfect",lvl:"B1",t:"Present perfect",
+  exp:"Liga o passado ao agora: algo aconteceu e o resultado importa neste momento (perdi e ainda não achei), ou experiências de vida.",
+  form:"have / has + particípio (lost, been, booked, cancelled)",
+  ex:[["I've lost my passport.","Perdi meu passaporte."],["Have you ever been to London?","Você já foi a Londres?"],["The flight has been cancelled.","O voo foi cancelado."]],
+  tip:"Se você disser quando aconteceu (yesterday, at 3 pm), use o past simple: I lost it yesterday."},
+ {id:"indirect",lvl:"B1",t:"Perguntas indiretas",
+  exp:"A forma mais educada de pedir informação a um desconhecido. Depois da abertura, a frase volta à ordem normal (sujeito + verbo).",
+  form:"Could you tell me / Do you know + where, what, if + sujeito + verbo",
+  ex:[["Could you tell me where the station is?","Poderia me dizer onde fica a estação?"],["Do you know what time the shop closes?","Sabe a que horas a loja fecha?"],["Do you know if there's a bank near here?","Sabe se tem um banco aqui perto?"]],
+  tip:"Errado: ...where is the station? Certo: ...where the station is?"},
+ {id:"cond1",lvl:"B1",t:"First conditional",
+  exp:"Para situações reais e prováveis: se isso acontecer, aquilo vai acontecer.",
+  form:"If + present simple, will + verbo",
+  ex:[["If you check out late, there will be an extra charge.","Se fizer check-out tarde, haverá uma taxa extra."],["If it rains, we'll take a taxi.","Se chover, pegaremos um táxi."],["If you need anything, call reception.","Se precisar de algo, ligue para a recepção."]],
+  tip:"Não use will logo depois de if: If it rains (e não “if it will rain”)."},
+ {id:"modals",lvl:"B1",t:"Should, have to, must",
+  exp:"Conselho e obrigação. Você vai ouvir muito isso de funcionários, placas e moradores.",
+  form:"should = deveria (conselho) / have to = tem que (regra, necessidade) / must = tem que (regra forte, avisos)",
+  ex:[["You should take the metro.","Você deveria pegar o metrô."],["You have to show your passport.","Você tem que mostrar o passaporte."],["Passengers must not leave bags unattended.","Passageiros não devem deixar malas sozinhas."]],
+  tip:"Don't have to = não precisa. Mustn't = é proibido. Parecem iguais, mas são bem diferentes."},
+ {id:"passive",lvl:"B1",t:"Voz passiva simples",
+  exp:"Aparece em avisos e anúncios, quando não importa quem faz a ação. O foco está no que acontece.",
+  form:"be + particípio (is served, are included, has been delayed)",
+  ex:[["Breakfast is served from 7 to 10.","O café é servido das 7 às 10."],["Taxes are included.","Os impostos estão incluídos."],["Flight BA215 has been delayed.","O voo BA215 foi atrasado."]],
+  tip:"Você nem precisa produzir muito, mas precisa reconhecer nos anúncios de aeroporto e hotel."}
+];
+ 
+const MODULES = [
+ {id:"airport",gate:"A1",name:"No aeroporto",en:"Airport",emoji:"✈️",color:"var(--blue)",rot:"-9deg",
+  intro:"Check-in, bagagem, assento, portão, atrasos e alfândega. Tudo o que você precisa entre a porta do aeroporto e a poltrona do avião.",
+  vocab:[
+   ["check-in desk","balcão de check-in","Where is the check-in desk?"],
+   ["boarding pass","cartão de embarque","Here is your boarding pass."],
+   ["passport","passaporte","Can I see your passport, please?"],
+   ["gate","portão de embarque","Your flight leaves from gate 12."],
+   ["luggage","bagagem","How much luggage do you have?"],
+   ["carry-on","bagagem de mão","Is this your carry-on?"],
+   ["aisle seat","assento no corredor","Can I have an aisle seat, please?"],
+   ["window seat","assento na janela","I'd like a window seat."],
+   ["delayed","atrasado","The flight is delayed by one hour."],
+   ["cancelled","cancelado","My flight has been cancelled."],
+   ["departures / arrivals","partidas / chegadas","Check the departures board."],
+   ["customs","alfândega","Do you have anything to declare at customs?"],
+   ["baggage claim","esteira de bagagem","My suitcase isn't at baggage claim."],
+   ["connecting flight","voo de conexão","I have a connecting flight to Lisbon."]
+  ],
+  grammar:["can","present","polite","perfect","passive"],
+  dialogue:[
+   ["a","Good morning. Where are you flying to today?","Bom dia. Para onde você vai voar hoje?"],
+   ["y","Good morning. I'm flying to London.","Bom dia. Vou para Londres."],
+   ["a","Can I see your passport, please?","Posso ver seu passaporte, por favor?"],
+   ["y","Sure, here you are.","Claro, aqui está."],
+   ["a","Are you checking in any bags?","Vai despachar alguma mala?"],
+   ["y","Yes, one suitcase. And this is my carry-on.","Sim, uma mala. E esta é minha bagagem de mão."],
+   ["a","Would you like a window or an aisle seat?","Prefere janela ou corredor?"],
+   ["y","An aisle seat, please.","Corredor, por favor."],
+   ["a","Here is your boarding pass. Boarding starts at 9:40 at gate 12.","Aqui está seu cartão de embarque. O embarque começa às 9h40 no portão 12."],
+   ["y","Thank you. Is the flight on time?","Obrigado. O voo está no horário?"],
+   ["a","It's delayed by twenty minutes. Have a nice flight!","Está atrasado vinte minutos. Boa viagem!"]
+  ],
+  quiz:[
+   {type:"mc",q:"Você quer sentar no corredor. O que você diz?",opts:["Can I have an aisle seat, please?","I want the corridor.","Give me a hall seat.","Can I sit in the way?"],a:0,why:"Corredor no avião é aisle. E Can I have...? é o pedido educado padrão."},
+   {type:"mc",q:"The flight isn't cancelled, it's just ___ by one hour.",opts:["delayed","cancelled","boarding","late time"],a:0,why:"Delayed = atrasado. Muito comum nos painéis: DELAYED."},
+   {type:"order",q:"Monte a pergunta: “A que horas o voo sai?”",s:"What time does the flight leave?",why:"Horário fixo usa present simple, com does e o verbo sem -s."},
+   {type:"mc",q:"Na alfândega perguntam: “Do you have anything to declare?” Você não tem nada. Resposta:",opts:["No, I have nothing to declare.","No, I don't declare.","Yes, nothing.","I am not declare."],a:0,why:"Nothing to declare = nada a declarar. Resposta curta e completa."},
+   {type:"mc",q:"Sua mala sumiu e ainda não apareceu. Qual frase usar no balcão?",opts:["I've lost my suitcase.","I lose my suitcase.","I'm losing my suitcase yesterday.","I have lose my suitcase."],a:0,why:"Present perfect (have + particípio) para algo que aconteceu e ainda tem efeito agora."},
+   {type:"mc",q:"O que significa boarding pass?",opts:["cartão de embarque","passaporte","portão","bilhete de trem"],a:0,why:"Boarding = embarque; pass = passe, cartão."},
+   {type:"mc",q:"Your flight leaves from ___ 12.",opts:["gate","door","port","exit"],a:0,why:"Portão de embarque é gate. Port é porto de navio."},
+   {type:"order",q:"Monte a pergunta educada: “Poderia me dizer onde fica o portão 12?”",s:"Could you tell me where gate 12 is?",why:"Pergunta indireta: depois de Could you tell me, a ordem volta a ser sujeito + verbo (gate 12 is)."}
+  ]},
+ {id:"hotel",gate:"B2",name:"No hotel",en:"Hotel",emoji:"🏨",color:"var(--purple)",rot:"7deg",
+  intro:"Reservar, fazer check-in, perguntar sobre café da manhã e Wi-Fi, e resolver problemas no quarto.",
+  vocab:[
+   ["reservation / booking","reserva","I have a reservation."],
+   ["single room","quarto de solteiro","I'd like a single room."],
+   ["double room","quarto de casal","A double room for three nights."],
+   ["twin room","quarto com duas camas","Do you have a twin room?"],
+   ["reception / front desk","recepção","Please leave the key at reception."],
+   ["key card","cartão-chave","My key card doesn't work."],
+   ["breakfast included","café da manhã incluído","Is breakfast included?"],
+   ["available","disponível","Do you have any rooms available?"],
+   ["per night","por noite","How much is it per night?"],
+   ["towel","toalha","Could I have some extra towels?"],
+   ["Wi-Fi password","senha do Wi-Fi","What's the Wi-Fi password?"],
+   ["elevator / lift","elevador","The elevator is on your left."],
+   ["air conditioning","ar-condicionado","The air conditioning doesn't work."],
+   ["check-out","saída do hotel","What time is check-out?"]
+  ],
+  grammar:["polite","thereis","wh","cond1","passive"],
+  dialogue:[
+   ["a","Good evening, welcome to the Park Hotel. How can I help you?","Boa noite, bem-vindo ao Park Hotel. Como posso ajudar?"],
+   ["y","Hi, I have a reservation under the name Silva.","Oi, tenho uma reserva no nome Silva."],
+   ["a","Let me check... Yes, a double room for three nights. Can I see your ID?","Deixe-me ver... Sim, quarto de casal por três noites. Posso ver seu documento?"],
+   ["y","Here you are. Is breakfast included?","Aqui está. O café da manhã está incluído?"],
+   ["a","Yes, it is. Breakfast is served from 7 to 10 in the restaurant.","Sim. O café é servido das 7 às 10 no restaurante."],
+   ["y","Great. What's the Wi-Fi password?","Ótimo. Qual é a senha do Wi-Fi?"],
+   ["a","It's on your key card holder. Your room is 405, on the fourth floor.","Está no porta-cartão. Seu quarto é o 405, no quarto andar."],
+   ["y","Thanks. What time is check-out?","Obrigado. A que horas é o check-out?"],
+   ["a","Check-out is at 11. If you need a late check-out, just call reception.","O check-out é às 11. Se precisar sair mais tarde, é só ligar para a recepção."],
+   ["y","Perfect, thank you!","Perfeito, obrigado!"]
+  ],
+  quiz:[
+   {type:"mc",q:"Você está viajando sozinho e quer um quarto só para você:",opts:["a single room","a lonely room","an only room","a one room"],a:0,why:"Single room = quarto para uma pessoa. Double = casal; twin = duas camas."},
+   {type:"mc",q:"There ___ any towels in my room.",opts:["aren't","isn't","not","no are"],a:0,why:"Towels é plural, então there aren't any."},
+   {type:"order",q:"Monte a frase: “Tenho uma reserva no nome Silva.”",s:"I have a reservation under the name Silva",why:"No nome de alguém, em inglês, é under the name."},
+   {type:"mc",q:"If you ___ late, there is an extra charge.",opts:["check out","will check out","checked out","checking out"],a:0,why:"First conditional: depois de if vem present simple, nunca will."},
+   {type:"mc",q:"O ar-condicionado quebrou. Você diz: “The air conditioning doesn't ___.”",opts:["work","works","working","worked"],a:0,why:"Depois de doesn't, o verbo fica na forma base: doesn't work."},
+   {type:"mc",q:"How much is it ___ night?",opts:["per","for each of","by","in"],a:0,why:"Per night = por noite. Também: per person, per day."},
+   {type:"mc",q:"Qual pedido soa mais educado na recepção?",opts:["I'd like to book a room for two nights.","I want room two nights.","Give me a room, two nights.","Room for two nights, now."],a:0,why:"I'd like to + verbo é o pedido educado padrão."},
+   {type:"mc",q:"A recepcionista diz: “Breakfast is served from 7 to 10.” Isso significa:",opts:["O café é servido das 7 às 10.","Você deve servir o café.","O café custa de 7 a 10.","O café acabou às 10."],a:0,why:"Voz passiva (is served): o foco é no café, não em quem serve."}
+  ]},
+ {id:"directions",gate:"C3",name:"Pedindo informação",en:"Directions",emoji:"🗺️",color:"var(--green)",rot:"-5deg",
+  intro:"Perguntar onde fica algo, entender a resposta, saber a distância e qual transporte pegar.",
+  vocab:[
+   ["excuse me","com licença","Excuse me, can you help me?"],
+   ["turn left / right","vire à esquerda / direita","Turn right at the traffic lights."],
+   ["go straight ahead","siga em frente","Go straight ahead for two blocks."],
+   ["block","quarteirão","It's two blocks from here."],
+   ["on the corner","na esquina","There's a café on the corner."],
+   ["next to","ao lado de","The bank is next to the hotel."],
+   ["opposite","em frente, do outro lado","It's opposite the station."],
+   ["between","entre","It's between the bank and the pharmacy."],
+   ["near / far","perto / longe","Is it far from here?"],
+   ["traffic lights","semáforo","Turn left at the traffic lights."],
+   ["bus stop","ponto de ônibus","Where is the nearest bus stop?"],
+   ["subway / metro station","estação de metrô","Is there a metro station near here?"],
+   ["on foot","a pé","It's ten minutes on foot."],
+   ["map","mapa","Can you show me on the map?"]
+  ],
+  grammar:["imper","prep","indirect","modals","wh"],
+  dialogue:[
+   ["y","Excuse me, could you tell me where the train station is?","Com licença, poderia me dizer onde fica a estação de trem?"],
+   ["a","Sure. Go straight ahead for two blocks, then turn left at the bank.","Claro. Siga em frente por dois quarteirões e vire à esquerda no banco."],
+   ["y","Is it far from here?","É longe daqui?"],
+   ["a","Not really. It takes about ten minutes on foot.","Não muito. Leva uns dez minutos a pé."],
+   ["y","Is there a bus stop near here?","Tem um ponto de ônibus aqui perto?"],
+   ["a","Yes, there's one on the corner, opposite the pharmacy. You can take bus 25.","Sim, tem um na esquina, em frente à farmácia. Você pode pegar o ônibus 25."],
+   ["y","How much is a ticket?","Quanto custa a passagem?"],
+   ["a","Two dollars. You should buy it at the machine.","Dois dólares. É melhor comprar na máquina."],
+   ["y","Thank you so much!","Muito obrigado!"],
+   ["a","You're welcome. Have a good day!","De nada. Tenha um bom dia!"]
+  ],
+  quiz:[
+   {type:"mc",q:"Qual é a pergunta indireta correta?",opts:["Could you tell me where the museum is?","Could you tell me where is the museum?","Could you tell me where the museum?","Could you tell me the museum where is?"],a:0,why:"Depois de Could you tell me, a ordem é sujeito + verbo: where the museum is."},
+   {type:"mc",q:"“The bus stop is opposite the pharmacy.” Onde fica o ponto?",opts:["Do outro lado da rua, de frente para a farmácia","Dentro da farmácia","Atrás da farmácia","Longe da farmácia"],a:0,why:"Opposite = do lado oposto, de frente."},
+   {type:"order",q:"Monte a instrução: “Vire à direita na esquina.”",s:"Turn right at the corner",why:"Instruções usam imperativo: verbo direto, sem sujeito."},
+   {type:"mc",q:"It ___ about ten minutes on foot.",opts:["takes","does","makes","lasts to"],a:0,why:"Para tempo de trajeto, use it takes: It takes ten minutes."},
+   {type:"mc",q:"Você pergunta “Is it far?” e ouve “No, it's just around the corner.” Isso quer dizer:",opts:["É bem pertinho.","Fica na esquina errada.","É muito longe.","Está fechado."],a:0,why:"Just around the corner = logo ali, bem perto."},
+   {type:"mc",q:"The pharmacy is ___ the bank and the café.",opts:["between","next","opposite of","among to"],a:0,why:"Between = entre duas coisas."},
+   {type:"mc",q:"Um morador te dá um conselho. Qual frase ele usaria?",opts:["You should take the metro.","You should to take the metro.","You must taking the metro.","You shoulding take the metro."],a:0,why:"Should + verbo sem to. É um conselho, não uma obrigação."},
+   {type:"mc",q:"O que significa go straight ahead?",opts:["Siga em frente","Volte","Vire à direita","Pare aqui"],a:0,why:"Straight ahead = reto, em frente."}
+  ]},
+ {id:"shopping",gate:"D4",name:"Fazendo compras",en:"Shopping",emoji:"🛍️",color:"var(--red)",rot:"10deg",
+  intro:"Perguntar preço, pedir outro tamanho, experimentar, pagar e trocar. Do “só estou olhando” ao “vou levar”.",
+  vocab:[
+   ["How much is it?","Quanto custa?","How much is this jacket?"],
+   ["cheap / expensive","barato / caro","It's too expensive for me."],
+   ["on sale","em promoção","These shoes are on sale."],
+   ["discount","desconto","Is there a discount?"],
+   ["size","tamanho","What size are you?"],
+   ["small / medium / large","pequeno / médio / grande","Do you have it in medium?"],
+   ["try on","experimentar (roupa)","Can I try it on?"],
+   ["fitting room","provador","Where is the fitting room?"],
+   ["cash / card","dinheiro / cartão","Can I pay by card?"],
+   ["change","troco","Here's your change."],
+   ["receipt","nota, recibo","Can I have a receipt, please?"],
+   ["refund / exchange","reembolso / troca","Can I exchange this?"],
+   ["bag","sacola","Do you need a bag?"],
+   ["just looking","só olhando","I'm just looking, thanks."]
+  ],
+  grammar:["demonstr","wh","compar","future","can"],
+  dialogue:[
+   ["a","Hi there! Can I help you?","Olá! Posso ajudar?"],
+   ["y","I'm just looking, thanks. Actually, how much is this jacket?","Só estou olhando, obrigado. Na verdade, quanto custa esta jaqueta?"],
+   ["a","It's 60 dollars, but it's on sale today: 20 percent off.","Custa 60 dólares, mas está em promoção hoje: 20% de desconto."],
+   ["y","Nice! Can I try it on?","Legal! Posso experimentar?"],
+   ["a","Of course. The fitting rooms are over there. What size are you?","Claro. Os provadores ficam ali. Qual é o seu tamanho?"],
+   ["y","Medium, I think.","Médio, acho."],
+   ["y","It's a bit small. Do you have it in a larger size?","Ficou um pouco pequena. Tem num tamanho maior?"],
+   ["a","Here's a large one.","Aqui está uma grande."],
+   ["y","This one is perfect. I'll take it.","Esta ficou perfeita. Vou levar."],
+   ["a","Great. Cash or card?","Ótimo. Dinheiro ou cartão?"],
+   ["y","Card, please. Can I have a receipt?","Cartão, por favor. Pode me dar a nota?"],
+   ["a","Sure. Here's your receipt and your bag.","Claro. Aqui está sua nota e sua sacola."]
+  ],
+  quiz:[
+   {type:"mc",q:"How much ___ these shoes?",opts:["are","is","do","does"],a:0,why:"Shoes é plural, então how much are."},
+   {type:"mc",q:"Você quer um produto mais barato: “Do you have a ___ one?”",opts:["cheaper","more cheap","cheapest","cheap than"],a:0,why:"Adjetivo curto ganha -er: cheap → cheaper."},
+   {type:"order",q:"Monte a pergunta: “Posso experimentar?”",s:"Can I try it on?",why:"Com try on, o pronome it fica no meio: try it on."},
+   {type:"mc",q:"O que significa I'll take it?",opts:["Vou levar.","Vou pegar depois.","Vou experimentar.","Vou devolver."],a:0,why:"Will para decisão tomada na hora. É assim que se fecha a compra."},
+   {type:"mc",q:"O vendedor pergunta se pode ajudar e você só quer olhar:",opts:["I'm just looking, thanks.","I'm only seeing.","I just watch.","No help, I look."],a:0,why:"Just looking é a expressão fixa para isso."},
+   {type:"mc",q:"Can I pay by ___?",opts:["card","cart","paper","credit"],a:0,why:"Pay by card = pagar com cartão. Pay in cash = em dinheiro."},
+   {type:"mc",q:"It's too small. Do you have it in a ___ size?",opts:["larger","more large","largest","large than"],a:0,why:"Large → larger. Também dá para dizer bigger."},
+   {type:"mc",q:"Os sapatos estão perto de você: “___ shoes are really nice.”",opts:["These","This","That","Those"],a:0,why:"Perto + plural = these."}
+  ]},
+ {id:"grammar",gate:"G5",name:"Trilha de gramática",en:"Grammar",emoji:"🧭",color:"var(--teal)",rot:"-3deg",track:true,
+  intro:"As estruturas essenciais do A0 ao B1, em ordem. Cada uma com fórmula, exemplos de viagem e a armadilha mais comum para quem fala português.",
+  quiz:[
+   {type:"mc",lvl:"A0",q:"___ you on vacation?",opts:["Are","Is","Do","Am"],a:0,why:"Com you, o verbo to be é are. Na pergunta, ele vem antes do sujeito."},
+   {type:"mc",lvl:"A0",q:"Como perguntar “Quanto custa?”",opts:["How much is it?","How many is it?","What cost it?","How much it is?"],a:0,why:"Preço = how much. A ordem da pergunta é How much + is + it."},
+   {type:"mc",lvl:"A1",q:"What time ___ the bus leave?",opts:["does","do","is","leaves"],a:0,why:"The bus = it, então does. O verbo leave fica sem -s."},
+   {type:"mc",lvl:"A1",q:"___ a pharmacy near here?",opts:["Is there","Have","There is","Has there"],a:0,why:"Existência = there is. Na pergunta, inverte: Is there...?"},
+   {type:"mc",lvl:"A2",q:"My suitcase ___ arrive.",opts:["didn't","don't","not","wasn't"],a:0,why:"Negativa no passado: didn't + verbo na forma base."},
+   {type:"mc",lvl:"A2",q:"This hotel is ___ than the other one.",opts:["cheaper","more cheap","cheapest","cheap"],a:0,why:"Comparativo de adjetivo curto: + er + than."},
+   {type:"mc",lvl:"A2",q:"Você acabou de decidir comprar. O que diz?",opts:["I'll take it.","I take it will.","I going to take.","I will to take it."],a:0,why:"Decisão na hora = will. Depois de will, verbo sem to."},
+   {type:"order",lvl:"B1",q:"Monte a pergunta educada: “Poderia me dizer onde fica o museu?”",s:"Could you tell me where the museum is?",why:"Pergunta indireta: sujeito + verbo depois de where."},
+   {type:"mc",lvl:"B1",q:"If you ___ anything, call reception.",opts:["need","will need","needed","needing"],a:0,why:"Depois de if, present simple."},
+   {type:"mc",lvl:"B1",q:"Como dizer “Você não precisa pagar agora”?",opts:["You don't have to pay now.","You mustn't pay now.","You shouldn't to pay now.","You haven't pay now."],a:0,why:"Don't have to = não é necessário. Mustn't seria “é proibido”."},
+   {type:"mc",lvl:"B1",q:"Você perdeu o passaporte e ainda está sem ele:",opts:["I've lost my passport.","I lost my passport tomorrow.","I lose my passport.","I have losing my passport."],a:0,why:"Present perfect: aconteceu e o problema continua agora."}
+  ]}
+];
+ 
+const RANKS = [
+ [0,"Turista iniciante"],[100,"Turista"],[250,"Viajante"],[450,"Explorador"],[700,"Cidadão do mundo"]
+];
+ 
+/* ============ ESTADO ============ */
+const STORAGE_KEY = "passaporteIngles_v1";
+const vazio = () => ({xp:0, learned:{}, grammarOk:{}, dialogDone:{}, qdone:{}, stamps:{}, best:{}});
+let state = carregar();
+function carregar(){
+  try{ const raw = localStorage.getItem(STORAGE_KEY); return raw ? Object.assign(vazio(), JSON.parse(raw)) : vazio(); }
+  catch(e){ return vazio(); }
+}
+function salvar(){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){} }
+ 
+/* ============ UTILIDADES ============ */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const shuffle = a => { const b=[...a]; for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];} return b; };
+const getMod = id => MODULES.find(m => m.id === id);
+const getGram = id => GRAMMAR.find(g => g.id === id);
+ 
+let toastTimer;
+function toast(msg){
+  const t = $("#toast"); t.textContent = msg; t.classList.add("on");
+  clearTimeout(toastTimer); toastTimer = setTimeout(()=>t.classList.remove("on"), 2200);
+}
+function ganharXP(n, motivo){
+  state.xp += n; salvar(); renderXP();
+  toast(`+${n} XP · ${motivo}`);
+}
+function rankInfo(xp){
+  let i = 0; RANKS.forEach((r,k)=>{ if(xp>=r[0]) i=k; });
+  const next = RANKS[i+1];
+  const pct = next ? ((xp-RANKS[i][0])/(next[0]-RANKS[i][0]))*100 : 100;
+  return {name:RANKS[i][1], next, pct};
+}
+function renderXP(){
+  const r = rankInfo(state.xp);
+  $("#xpNum").textContent = state.xp + " XP";
+  $("#rankName").textContent = r.name;
+  $("#rankNext").textContent = r.next ? `${r.next[0]-state.xp} XP para ${r.next[1]}` : "Nível máximo alcançado";
+  $("#xpFill").style.width = r.pct + "%";
+}
+ 
+/* Voz */
+let slow = false;
+let voices = [];
+function loadVoices(){ if("speechSynthesis" in window) voices = speechSynthesis.getVoices().filter(v=>/^en[-_]/i.test(v.lang)); }
+if("speechSynthesis" in window){ loadVoices(); speechSynthesis.onvoiceschanged = loadVoices; }
+function speak(text, who, onend){
+  if(!("speechSynthesis" in window)){ toast("Seu navegador não tem leitura em voz alta."); return; }
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "en-US"; u.rate = slow ? 0.7 : 0.95;
+  const us = voices.filter(v=>/en[-_]US/i.test(v.lang));
+  const pool = us.length ? us : voices;
+  if(pool.length){ u.voice = who==="y" && pool[1] ? pool[1] : pool[0]; }
+  if(onend){ u.onend = onend; u.onerror = onend; }
+  speechSynthesis.speak(u);
+}
+function sayBtn(text){ return `<button class="say" data-say="${esc(text)}" aria-label="Ouvir: ${esc(text)}">🔊</button>`; }
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-say]");
+  if(b){ e.stopPropagation(); speechSynthesis && speechSynthesis.cancel(); speak(b.dataset.say); }
+});
+ 
+/* ============ PROGRESSO POR MÓDULO ============ */
+function progresso(m){
+  if(m.track){
+    const g = GRAMMAR.filter(x=>state.grammarOk[x.id]).length;
+    return {done:g, total:GRAMMAR.length};
+  }
+  const w = m.vocab.filter((v,i)=>state.learned[m.id+":"+i]).length;
+  const g = m.grammar.filter(id=>state.grammarOk[id]).length;
+  return {done:w+g+(state.dialogDone[m.id]?1:0), total:m.vocab.length+m.grammar.length+1};
+}
+function statusDe(m){
+  if(state.stamps[m.id]) return ["Carimbado","s2"];
+  if(progresso(m).done>0 || state.best[m.id]!=null) return ["Em andamento","s1"];
+  return ["Aguardando embarque","s0"];
+}
+ 
+/* ============ HOME ============ */
+function renderHome(animate){
+  const rows = MODULES.map((m,i)=>{
+    const [st,cls] = statusDe(m);
+    const info = m.track ? `${GRAMMAR.length} estruturas, A0 a B1` : `${m.vocab.length} palavras, ${m.grammar.length} estruturas, 1 diálogo`;
+    const fl = animate ? ` style="animation-delay:${i*110}ms"` : "";
+    return `<div class="row">
+      <div class="gate"><span class="${animate?"flap":""}"${fl}>${m.gate}</span></div>
+      <div class="dest"><b><span class="${animate?"flap":""}"${fl}>${m.emoji} ${esc(m.name)}</span></b><span>${esc(m.en)}</span></div>
+      <div class="info">${info}</div>
+      <div class="status ${cls}">${st}</div>
+      <button class="go" data-open="${m.id}">Embarcar</button>
+    </div>`;
+  }).join("");
+ 
+  const stamps = MODULES.map(m=>{
+    const d = state.stamps[m.id];
+    if(!d) return `<div class="slot">${m.emoji}<br>${esc(m.name)}<br>faça 70% no desafio</div>`;
+    return `<div class="stamp" style="color:${m.color};--r:${m.rot}"><div><b>${esc(m.en)}</b><span>APPROVED</span><span>${esc(d)}</span></div></div>`;
+  }).join("");
+ 
+  const count = Object.keys(state.stamps).length;
+  $("#app").innerHTML = `
+  <section class="hero">
+    <div>
+      <h1>Sua viagem inteira em inglês</h1>
+      <p>Do aeroporto à loja, passando pelo hotel e pela rua. Escolha um destino no painel, aprenda as palavras, ouça o diálogo e passe no desafio para ganhar o carimbo no passaporte.</p>
+    </div>
+    <div class="levels" aria-label="Níveis do Quadro Europeu">
+      <div class="lvl"><b>A0</b><span>Primeiras palavras e frases prontas</span></div>
+      <div class="lvl"><b>A1</b><span>Frases simples do dia a dia</span></div>
+      <div class="lvl"><b>A2</b><span>Pedidos educados e passado</span></div>
+      <div class="lvl"><b>B1</b><span>Resolver imprevistos sozinho</span></div>
+    </div>
+  </section>
+  <section class="board" aria-label="Painel de destinos">
+    <div class="board-head"><h2>Departures</h2><span class="clock" id="clock"></span></div>
+    ${rows}
+  </section>
+  <section class="passport" aria-label="Seu passaporte">
+    <div class="cover">
+      <div><h3>Passaporte<br>de viagem</h3><p style="margin-top:10px">${count} de ${MODULES.length} carimbos</p></div>
+      <p>Cada carimbo mostra que você consegue sustentar essa conversa sozinho.</p>
+      <button class="reset" id="resetBtn">Zerar progresso</button>
+    </div>
+    <div class="stamps">${stamps}</div>
+  </section>`;
+  tick();
+  $("#resetBtn").onclick = () => {
+    if(confirm("Apagar XP, palavras aprendidas e carimbos?")){ state = vazio(); salvar(); renderXP(); renderHome(false); toast("Progresso zerado"); }
+  };
+}
+function tick(){ const c=$("#clock"); if(c){ const d=new Date(); c.textContent = d.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"}); } }
+setInterval(tick, 30000);
+ 
+document.addEventListener("click", e => {
+  const o = e.target.closest("[data-open]");
+  if(o) openModule(o.dataset.open);
+});
+ 
+/* ============ MÓDULO ============ */
+let current = null, currentTab = null;
+function openModule(id, tab){
+  const m = getMod(id); current = m;
+  const tabs = m.track ? [["track","Trilha A0 → B1"],["quiz","Desafio"]]
+                       : [["vocab","Vocabulário"],["grammar","Gramática"],["dialogue","Diálogo"],["quiz","Desafio"]];
+  currentTab = tab || tabs[0][0];
+  $("#app").innerHTML = `
+    <section class="modhead" style="--accent:${m.color}">
+      <button class="back" id="backBtn">← Voltar ao painel</button>
+      <div class="modtitle"><h2>${m.emoji} ${esc(m.name)}</h2><span class="en">${esc(m.en)} · portão ${m.gate}</span></div>
+      <p class="modintro">${esc(m.intro)}</p>
+      <div class="tabs" role="tablist">${tabs.map(([k,l])=>`<button class="tab" role="tab" data-tab="${k}" aria-selected="${k===currentTab}">${l}</button>`).join("")}</div>
+      <div class="panel" id="panel" role="tabpanel"></div>
+    </section>`;
+  $("#backBtn").onclick = () => { speechSynthesis && speechSynthesis.cancel(); renderHome(false); window.scrollTo(0,0); };
+  document.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => {
+    currentTab = b.dataset.tab;
+    document.querySelectorAll("[data-tab]").forEach(x=>x.setAttribute("aria-selected", x===b));
+    renderTab();
+  });
+  renderTab(); window.scrollTo(0,0);
+}
+function renderTab(){
+  speechSynthesis && speechSynthesis.cancel();
+  const t = currentTab;
+  if(t==="vocab") renderVocab();
+  else if(t==="grammar") renderGrammar(current.grammar.map(getGram));
+  else if(t==="track") renderTrack();
+  else if(t==="dialogue") renderDialogue();
+  else startQuiz();
+}
+ 
+/* Vocabulário */
+function renderVocab(){
+  const m = current;
+  const n = m.vocab.filter((v,i)=>state.learned[m.id+":"+i]).length;
+  $("#panel").innerHTML = `
+    <div class="toolbar">
+      <span class="small"><b>${n}/${m.vocab.length}</b> palavras aprendidas · +5 XP por palavra</span>
+      <button class="btn" id="slowBtn" aria-pressed="${slow}">🐢 Voz devagar</button>
+    </div>
+    <p class="note">Tente lembrar o significado antes de virar o cartão.</p>
+    <div class="cards">${m.vocab.map((v,i)=>{
+      const k=m.id+":"+i, ok=state.learned[k];
+      return `<div class="flash${ok?" learned":""}" data-i="${i}">
+        <div class="inner">
+          <div class="face front">
+            <p class="word">${esc(v[0])}</p>
+            <p class="hint">${ok?'<span class="done">✓ Aprendida</span>':"Você sabe o que significa?"}</p>
+            <div class="actions">${sayBtn(v[0])}<button class="btn" data-flip>Ver tradução</button></div>
+          </div>
+          <div class="face back">
+            <p class="pt">${esc(v[1])}</p>
+            <p class="ex">“${esc(v[2])}”</p>
+            <div class="actions">${sayBtn(v[2])}<button class="btn" data-flip>Voltar</button>
+            <button class="btn primary" data-learn="${i}" ${ok?"disabled":""}>${ok?"✓ Feito":"Aprendi"}</button></div>
+          </div>
+        </div></div>`;}).join("")}
+    </div>`;
+  $("#slowBtn").onclick = e => { slow=!slow; e.currentTarget.setAttribute("aria-pressed",slow); };
+  document.querySelectorAll("[data-flip]").forEach(b=>b.onclick=()=>b.closest(".flash").classList.toggle("flipped"));
+  document.querySelectorAll("[data-learn]").forEach(b=>b.onclick=()=>{
+    const k=m.id+":"+b.dataset.learn; if(state.learned[k]) return;
+    state.learned[k]=true; ganharXP(5,"palavra aprendida");
+    const card=b.closest(".flash"); card.classList.add("learned"); card.classList.remove("flipped");
+    b.disabled=true; b.textContent="✓ Feito";
+    card.querySelector(".hint").innerHTML='<span class="done">✓ Aprendida</span>';
+    const n2 = m.vocab.filter((v,i)=>state.learned[m.id+":"+i]).length;
+    $(".toolbar .small").innerHTML = `<b>${n2}/${m.vocab.length}</b> palavras aprendidas · +5 XP por palavra`;
+    if(n2===m.vocab.length) toast("Vocabulário completo! Agora o diálogo.");
+  });
+}
+ 
+/* Gramática */
+function gramCard(g){
+  const ok = state.grammarOk[g.id];
+  return `<article class="gcard">
+    <div class="badge b-${g.lvl}" aria-label="Nível ${g.lvl}">${g.lvl}</div>
+    <div>
+      <h3>${esc(g.t)}</h3>
+      <p>${esc(g.exp)}</p>
+      <p class="formula">${esc(g.form)}</p>
+      <ul class="ex-list">${g.ex.map(x=>`<li>${sayBtn(x[0])}<div><div class="en">${esc(x[0])}</div><div class="ptx">${esc(x[1])}</div></div></li>`).join("")}</ul>
+      <p class="tip">💡 ${esc(g.tip)}</p>
+      <button class="btn ${ok?"":"primary"}" data-gok="${g.id}" ${ok?"disabled":""}>${ok?"✓ Entendido":"Entendi (+5 XP)"}</button>
+    </div>
+  </article>`;
+}
+function bindGram(){
+  document.querySelectorAll("[data-gok]").forEach(b=>b.onclick=()=>{
+    const id=b.dataset.gok; if(state.grammarOk[id]) return;
+    state.grammarOk[id]=true; ganharXP(5,"estrutura entendida");
+    b.disabled=true; b.classList.remove("primary"); b.textContent="✓ Entendido";
+  });
+}
+function renderGrammar(list){
+  $("#panel").innerHTML = `<p class="note">As estruturas que mais aparecem nesta situação, do nível mais simples ao mais avançado.</p>
+    <div class="gram">${[...list].sort((a,b)=>a.lvl.localeCompare(b.lvl)).map(gramCard).join("")}</div>`;
+  bindGram();
+}
+let trackLvl = "all";
+function renderTrack(){
+  const lv = ["all","A0","A1","A2","B1"];
+  const list = GRAMMAR.filter(g=>trackLvl==="all"||g.lvl===trackLvl);
+  const done = GRAMMAR.filter(g=>state.grammarOk[g.id]).length;
+  $("#panel").innerHTML = `
+    <div class="toolbar"><span class="small"><b>${done}/${GRAMMAR.length}</b> estruturas entendidas</span></div>
+    <div class="lvlfilter" role="group" aria-label="Filtrar por nível">${lv.map(l=>`<button class="btn" data-lv="${l}" aria-pressed="${l===trackLvl}">${l==="all"?"Todos os níveis":l}</button>`).join("")}</div>
+    <div class="gram">${list.map(gramCard).join("")}</div>`;
+  document.querySelectorAll("[data-lv]").forEach(b=>b.onclick=()=>{ trackLvl=b.dataset.lv; renderTrack(); });
+  bindGram();
+}
+ 
+/* Diálogo */
+function renderDialogue(){
+  const m = current;
+  $("#panel").innerHTML = `
+    <div class="toolbar">
+      <button class="btn primary" id="playAll">▶ Ouvir diálogo</button>
+      <button class="btn" id="ptBtn" aria-pressed="false">Mostrar tradução</button>
+      <button class="btn" id="hideBtn" aria-pressed="false">Esconder minhas falas</button>
+      <button class="btn" id="slowBtn" aria-pressed="${slow}">🐢 Devagar</button>
+    </div>
+    <p class="note">Você é o balão colorido. No modo “esconder minhas falas”, tente dizer sua fala em voz alta antes de tocar para revelar. Ouvir o diálogo inteiro vale +10 XP.</p>
+    <div class="chat" id="chat">${m.dialogue.map((l,i)=>`
+      <div class="line ${l[0]==="y"?"you":""}" data-li="${i}">
+        ${sayBtn(l[1])}
+        <div class="bubble"><span class="who">${l[0]==="y"?"Você":"Atendente"}</span><span class="t-en">${esc(l[1])}</span><span class="t-pt">${esc(l[2])}</span></div>
+      </div>`).join("")}
+    </div>`;
+  const chat=$("#chat");
+  $("#ptBtn").onclick=e=>{const on=chat.classList.toggle("showpt"); e.currentTarget.setAttribute("aria-pressed",on);};
+  $("#hideBtn").onclick=e=>{const on=chat.classList.toggle("hideyou"); e.currentTarget.setAttribute("aria-pressed",on); chat.querySelectorAll(".revealed").forEach(x=>x.classList.remove("revealed"));};
+  $("#slowBtn").onclick=e=>{slow=!slow; e.currentTarget.setAttribute("aria-pressed",slow);};
+  chat.querySelectorAll(".line.you .bubble").forEach(b=>b.onclick=()=>b.parentElement.classList.add("revealed"));
+  $("#playAll").onclick=()=>{
+    if(!("speechSynthesis" in window)){ toast("Seu navegador não tem leitura em voz alta."); return; }
+    speechSynthesis.cancel();
+    const lines=[...chat.querySelectorAll(".line")];
+    let i=0;
+    const next=()=>{
+      lines.forEach(l=>l.classList.remove("speaking"));
+      if(i>=m.dialogue.length){
+        if(!state.dialogDone[m.id]){ state.dialogDone[m.id]=true; ganharXP(10,"diálogo completo"); }
+        return;
+      }
+      const l=m.dialogue[i]; lines[i].classList.add("speaking");
+      lines[i].scrollIntoView({block:"nearest",behavior:"smooth"});
+      i++; speak(l[1], l[0], ()=>setTimeout(next,350));
+    };
+    next();
+  };
+}
+ 
+/* Desafio */
+let quiz = null;
+function startQuiz(){
+  const m = current;
+  quiz = {qs: shuffle(m.quiz.map((q,idx)=>({...q, idx, _opts: q.type==="mc"?shuffle(q.opts):null, _words: q.type==="order"?shuffleWords(q.s):null}))), i:0, score:0, combo:0};
+  renderQ();
+}
+function shuffleWords(s){
+  const w=s.split(" "); let r=shuffle(w), n=0;
+  while(r.join(" ")===s && n++<10) r=shuffle(w);
+  return r;
+}
+function renderQ(){
+  const m=current, q=quiz.qs[quiz.i], total=quiz.qs.length;
+  const comboTxt = quiz.combo>=2 ? `<span class="combo">🔥 Sequência de ${quiz.combo}</span>` : "";
+  let body="";
+  if(q.type==="mc"){
+    body = `<div class="opts">${q._opts.map(o=>`<button class="opt" data-opt="${esc(o)}">${esc(o)}</button>`).join("")}</div>`;
+  } else {
+    body = `<div class="built" id="built" aria-label="Sua frase"></div>
+      <div class="pool" id="pool">${q._words.map((w,k)=>`<button class="chip" data-k="${k}">${esc(w)}</button>`).join("")}</div>
+      <div class="qnav" style="justify-content:flex-start;margin-top:0"><button class="btn" id="clearBtn">Limpar</button><button class="btn primary" id="checkBtn" disabled>Verificar</button></div>`;
+  }
+  $("#panel").innerHTML = `
+    <div class="quiz">
+      <div class="qmeta"><span>Pergunta ${quiz.i+1} de ${total}${q.lvl?` · nível ${q.lvl}`:""}</span>${comboTxt}<span>Acertos: ${quiz.score}</span></div>
+      <div class="qbar"><i style="width:${(quiz.i/total)*100}%"></i></div>
+      <p class="qtext">${esc(q.q)}</p>
+      ${body}
+      <div id="fb"></div>
+    </div>`;
+  if(q.type==="mc"){
+    document.querySelectorAll("[data-opt]").forEach(b=>b.onclick=()=>{
+      const right = q.opts[q.a];
+      const ok = b.dataset.opt===right;
+      document.querySelectorAll("[data-opt]").forEach(x=>{ x.disabled=true; if(x.dataset.opt===right) x.classList.add("right"); });
+      if(!ok) b.classList.add("wrong");
+      responder(ok, right);
+    });
+  } else {
+    const built=$("#built"), pool=$("#pool"), check=$("#checkBtn");
+    const upd=()=>{ check.disabled = pool.querySelectorAll(".chip:not(.hidden)").length>0; };
+    pool.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{
+      c.classList.add("hidden");
+      const nb=document.createElement("button"); nb.className="chip"; nb.textContent=c.textContent; nb.dataset.from=c.dataset.k;
+      nb.onclick=()=>{ if(check.dataset.locked) return; nb.remove(); c.classList.remove("hidden"); upd(); };
+      built.appendChild(nb); upd();
+    });
+    $("#clearBtn").onclick=()=>{ if(check.dataset.locked) return; built.innerHTML=""; pool.querySelectorAll(".chip").forEach(c=>c.classList.remove("hidden")); upd(); };
+    check.onclick=()=>{
+      const frase=[...built.querySelectorAll(".chip")].map(c=>c.textContent).join(" ");
+      const ok = frase===q.s;
+      check.dataset.locked="1"; check.disabled=true; $("#clearBtn").disabled=true;
+      built.classList.add(ok?"right":"wrong");
+      responder(ok, q.s);
+    };
+  }
+}
+function responder(ok, right){
+  const m=current, q=quiz.qs[quiz.i];
+  if(ok){
+    quiz.score++; quiz.combo++;
+    const key=m.id+":"+q.idx;
+    if(!state.qdone[key]){
+      state.qdone[key]=true;
+      const bonus = quiz.combo>=3 ? 5 : 0;
+      ganharXP(10+bonus, bonus?`acerto em sequência 🔥`:"resposta certa");
+    }
+  } else quiz.combo=0;
+  const last = quiz.i===quiz.qs.length-1;
+  $("#fb").innerHTML = `
+    <div class="feedback ${ok?"ok":"no"}">
+      <b>${ok?"Isso mesmo!":"Quase. A resposta é: "+esc(right)}</b>${esc(q.why)}
+      <div style="margin-top:8px">${sayBtn(right)}</div>
+    </div>
+    <div class="qnav"><button class="btn primary" id="nextBtn">${last?"Ver resultado":"Próxima"}</button></div>`;
+  const nb=$("#nextBtn"); nb.focus();
+  nb.onclick=()=>{ if(last) resultado(); else { quiz.i++; renderQ(); } };
+}
+function resultado(){
+  const m=current, total=quiz.qs.length, pct=Math.round(quiz.score/total*100);
+  const had = !!state.stamps[m.id];
+  state.best[m.id] = Math.max(state.best[m.id]||0, pct);
+  let stampHtml="", msg="";
+  if(pct>=70){
+    if(!had){ state.stamps[m.id]=new Date().toLocaleDateString("pt-BR"); ganharXP(30,"carimbo conquistado"); }
+    salvar();
+    stampHtml = `<div class="stamp ${had?"":"new"}" style="--r:${m.rot}"><div><b>${esc(m.en)}</b><span>APPROVED</span><span>${esc(state.stamps[m.id])}</span></div></div>`;
+    msg = had ? "Você manteve o carimbo. Bom treino!" : "Carimbo conquistado! Ele já está no seu passaporte.";
+  } else {
+    salvar();
+    msg = "Você precisa de 70% para o carimbo. Revise o vocabulário e o diálogo e tente de novo.";
+  }
+  $("#panel").innerHTML = `
+    <div class="quiz result">
+      <p class="small">Resultado</p>
+      <div class="big">${quiz.score}/${total}</div>
+      <p><b>${pct}% de acertos</b> · melhor marca: ${state.best[m.id]}%</p>
+      ${stampHtml}
+      <p>${msg}</p>
+      <div class="qnav" style="justify-content:center">
+        <button class="btn" id="againBtn">Tentar de novo</button>
+        <button class="btn primary" id="homeBtn">Voltar ao painel</button>
+      </div>
+    </div>`;
+  $("#againBtn").onclick=startQuiz;
+  $("#homeBtn").onclick=()=>{ renderHome(false); window.scrollTo(0,0); };
+}
+ 
+/* ============ INÍCIO ============ */
+renderXP();
+renderHome(true);
+</script>
+</body>
+</html>
+ 
