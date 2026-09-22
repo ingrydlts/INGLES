@@ -1,44 +1,3 @@
-
-Claude a terminé sa réponse.
-me entregue um html com um conteudo gamificado e explicativo dos principais vocabularios e gramatica do A0 ao B1 de ingles, para desenvolver conversas simples em contextos de fazerr uma compra, pedir informaçao, reserva de hotel e aeroporto
-
-Lire 2 fichiers, fichier créé, a exécuté une commande
-
-Passaporte do Inglês: A0 ao B1 para viajar
-Artefact·Vous uniquement 
-Criei o Passaporte do Inglês, uma página interativa que organiza o conteúdo como uma viagem. Um painel de embarque tem cinco destinos:
-
-✈️ Aeroporto: check-in, bagagem, assento, portão, atrasos e alfândega.
-🏨 Hotel: reserva, tipos de quarto, café da manhã, Wi-Fi e problemas no quarto.
-🗺️ Pedindo informação: direções, distâncias, preposições de lugar e transporte.
-🛍️ Compras: preço, tamanhos, provador, pagamento e troca.
-🧭 Trilha de gramática: 18 estruturas organizadas de A0 a B1. Vai do verbo to be e dos pedidos com can até o present perfect, as perguntas indiretas, o first conditional e a voz passiva. Você pode filtrar por nível.
-Cada destino tem quatro abas:
-
-Vocabulário: flashcards que viram, com áudio e frase de exemplo.
-Gramática: explicação em português, fórmula, exemplos com áudio e a armadilha mais comum para quem fala português.
-Diálogo: uma conversa-modelo com tradução opcional. Um modo "esconder minhas falas" deixa você treinar dizendo suas falas em voz alta.
-Desafio: perguntas de múltipla escolha e de montar frases, com explicação depois de cada resposta.
-A parte de jogo funciona com pontos de experiência (XP) por palavra aprendida, estrutura entendida, diálogo ouvido e resposta certa, com bônus quando você acerta várias seguidas. Você sobe de nível, de "Turista iniciante" até "Cidadão do mundo". Quem faz 70% ou mais no desafio ganha um carimbo no passaporte. O progresso fica salvo no seu navegador.
-
-O áudio usa a voz do próprio navegador, então a qualidade varia de um aparelho para outro. No Chrome e no Safari costuma soar bem.
-
-me entregue o html pra eu incorporar no github
-
-Presented file
-Presented file
-Arquivo abaixo. É um único HTML autocontido (sem dependências externas além do Google Fonts e da voz do navegador), então basta subir esse arquivo no seu repositório — por exemplo como index.html num repo do GitHub Pages, ou dentro de uma pasta /docs, para ficar acessível como página.
-
-
-Passaporte ingles
-Code·HTML 
-
-
-
-Claude est une IA et peut commettre des erreurs.
-
-
-Passaporte ingles · HTML
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -81,7 +40,7 @@ button{font:inherit;color:inherit;cursor:pointer;min-height:44px}
 :focus-visible{outline:3px solid var(--sign);outline-offset:2px;border-radius:6px}
 .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
 img{max-width:100%}
- 
+
 /* Top bar */
 .topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0 8px;flex-wrap:wrap}
 .brand{font-family:var(--display);font-weight:900;font-size:26px;letter-spacing:.01em;display:flex;align-items:center;gap:10px}
@@ -92,7 +51,7 @@ img{max-width:100%}
 .xpbar{width:120px;height:8px;background:var(--line);border-radius:8px;overflow:hidden}
 .xpbar i{display:block;height:100%;background:var(--sign);border-radius:8px;transition:width .4s}
 .small{font-size:14px;color:var(--muted)}
- 
+
 /* Hero */
 .hero{padding:28px 0 18px;display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:end}
 .hero h1{font-family:var(--display);font-weight:900;font-size:clamp(46px,8vw,92px);line-height:.9;margin:0;letter-spacing:-.01em}
@@ -101,7 +60,7 @@ img{max-width:100%}
 .lvl{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px}
 .lvl b{font-family:var(--display);font-size:26px;display:block;line-height:1}
 .lvl span{font-size:13px;color:var(--muted);line-height:1.3;display:block;margin-top:4px}
- 
+
 /* Departure board */
 .board{background:var(--board);color:var(--board-text);border-radius:18px;padding:18px;margin:10px 0 30px}
 .board-head{display:flex;justify-content:space-between;align-items:baseline;padding:0 6px 12px;gap:10px;flex-wrap:wrap}
@@ -123,7 +82,7 @@ img{max-width:100%}
   .row{grid-template-columns:48px 1fr auto;grid-template-areas:"g d b" "g i s"}
   .row .gate{grid-area:g}.row .dest{grid-area:d}.row .info{grid-area:i}.row .status{grid-area:s;font-size:17px;text-align:right}.row .go{grid-area:b}
 }
- 
+
 /* Passport */
 .passport{display:grid;grid-template-columns:260px 1fr;gap:0;background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-bottom:40px}
 .passport .cover{background:#5B1F2A;color:#F2D58A;padding:24px;display:flex;flex-direction:column;justify-content:space-between;gap:18px}
@@ -138,7 +97,7 @@ img{max-width:100%}
 .stamp.new{animation:thump .5s ease-out}
 @keyframes thump{0%{transform:scale(1.6) rotate(0);opacity:0}70%{transform:scale(.95) rotate(var(--r,-8deg));opacity:1}100%{transform:rotate(var(--r,-8deg))}}
 @media (max-width:760px){.passport{grid-template-columns:1fr}}
- 
+
 /* Module view */
 .modhead{padding:22px 0 8px}
 .back{background:transparent;border:1px solid var(--line);border-radius:10px;padding:6px 14px;font-size:15px}
@@ -157,7 +116,7 @@ img{max-width:100%}
 .btn:disabled{opacity:.55;cursor:default}
 .say{background:none;border:1px solid var(--line);border-radius:50%;width:40px;height:40px;min-height:40px;display:inline-grid;place-items:center;font-size:17px;flex:none;padding:0}
 .say:hover{border-color:var(--accent)}
- 
+
 /* Flashcards */
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
 .flash{perspective:900px;height:220px}
@@ -173,7 +132,7 @@ img{max-width:100%}
 .face .actions .btn{flex:1;padding:6px 10px;font-size:14px}
 .face .hint{font-size:13px;color:var(--muted);margin:0;flex:1}
 .face .done{color:var(--green);font-weight:700;font-size:14px}
- 
+
 /* Grammar */
 .lvlfilter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
 .gram{display:grid;gap:14px}
@@ -189,7 +148,7 @@ img{max-width:100%}
 .ex-list .ptx{color:var(--muted);font-size:15px}
 .tip{font-size:15px;background:color-mix(in srgb,var(--sign) 22%,transparent);border-radius:8px;padding:8px 12px;margin:0 0 12px}
 @media (max-width:560px){.gcard{grid-template-columns:1fr}}
- 
+
 /* Dialogue */
 .chat{display:grid;gap:10px;max-width:720px}
 .line{display:flex;gap:10px;align-items:flex-start}
@@ -203,7 +162,7 @@ img{max-width:100%}
 .line.speaking .bubble{outline:3px solid var(--sign)}
 .chat.hideyou .line.you:not(.revealed) .t-en{filter:blur(7px);user-select:none}
 .chat.hideyou .line.you:not(.revealed) .bubble{cursor:pointer}
- 
+
 /* Quiz */
 .quiz{max-width:720px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px}
 .qmeta{display:flex;justify-content:space-between;gap:10px;font-size:14px;color:var(--muted);margin-bottom:8px;flex-wrap:wrap}
@@ -231,14 +190,14 @@ img{max-width:100%}
 .result{text-align:center}
 .result .big{font-family:var(--display);font-size:80px;font-weight:900;line-height:1;margin:6px 0}
 .result .stamp{width:170px;margin:18px auto;color:var(--accent)}
- 
+
 /* Toast */
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--ink);color:var(--paper);padding:10px 18px;border-radius:12px;font-weight:700;opacity:0;transition:.3s;pointer-events:none;z-index:10;max-width:90vw;text-align:center}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 .hidden{display:none!important}
 .note{font-size:14px;color:var(--muted);margin:0 0 14px}
 footer{padding:10px 0 40px;font-size:14px;color:var(--muted)}
- 
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
@@ -257,12 +216,12 @@ footer{padding:10px 0 40px;font-size:14px;color:var(--muted)}
       <div class="xpnum" id="xpNum">0 XP</div>
     </div>
   </header>
- 
+
   <main id="app"></main>
   <footer>Toque em 🔊 para ouvir a pronúncia (usa a voz do seu navegador). Seu progresso fica salvo neste navegador.</footer>
 </div>
 <div class="toast" id="toast" role="status"></div>
- 
+
 <script>
 /* ============ CONTEÚDO ============ */
 const GRAMMAR = [
@@ -357,7 +316,7 @@ const GRAMMAR = [
   ex:[["Breakfast is served from 7 to 10.","O café é servido das 7 às 10."],["Taxes are included.","Os impostos estão incluídos."],["Flight BA215 has been delayed.","O voo BA215 foi atrasado."]],
   tip:"Você nem precisa produzir muito, mas precisa reconhecer nos anúncios de aeroporto e hotel."}
 ];
- 
+
 const MODULES = [
  {id:"airport",gate:"A1",name:"No aeroporto",en:"Airport",emoji:"✈️",color:"var(--blue)",rot:"-9deg",
   intro:"Check-in, bagagem, assento, portão, atrasos e alfândega. Tudo o que você precisa entre a porta do aeroporto e a poltrona do avião.",
@@ -542,11 +501,11 @@ const MODULES = [
    {type:"mc",lvl:"B1",q:"Você perdeu o passaporte e ainda está sem ele:",opts:["I've lost my passport.","I lost my passport tomorrow.","I lose my passport.","I have losing my passport."],a:0,why:"Present perfect: aconteceu e o problema continua agora."}
   ]}
 ];
- 
+
 const RANKS = [
  [0,"Turista iniciante"],[100,"Turista"],[250,"Viajante"],[450,"Explorador"],[700,"Cidadão do mundo"]
 ];
- 
+
 /* ============ ESTADO ============ */
 const STORAGE_KEY = "passaporteIngles_v1";
 const vazio = () => ({xp:0, learned:{}, grammarOk:{}, dialogDone:{}, qdone:{}, stamps:{}, best:{}});
@@ -556,14 +515,14 @@ function carregar(){
   catch(e){ return vazio(); }
 }
 function salvar(){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }catch(e){} }
- 
+
 /* ============ UTILIDADES ============ */
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const shuffle = a => { const b=[...a]; for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];} return b; };
 const getMod = id => MODULES.find(m => m.id === id);
 const getGram = id => GRAMMAR.find(g => g.id === id);
- 
+
 let toastTimer;
 function toast(msg){
   const t = $("#toast"); t.textContent = msg; t.classList.add("on");
@@ -586,7 +545,7 @@ function renderXP(){
   $("#rankNext").textContent = r.next ? `${r.next[0]-state.xp} XP para ${r.next[1]}` : "Nível máximo alcançado";
   $("#xpFill").style.width = r.pct + "%";
 }
- 
+
 /* Voz */
 let slow = false;
 let voices = [];
@@ -607,7 +566,7 @@ document.addEventListener("click", e => {
   const b = e.target.closest("[data-say]");
   if(b){ e.stopPropagation(); speechSynthesis && speechSynthesis.cancel(); speak(b.dataset.say); }
 });
- 
+
 /* ============ PROGRESSO POR MÓDULO ============ */
 function progresso(m){
   if(m.track){
@@ -623,7 +582,7 @@ function statusDe(m){
   if(progresso(m).done>0 || state.best[m.id]!=null) return ["Em andamento","s1"];
   return ["Aguardando embarque","s0"];
 }
- 
+
 /* ============ HOME ============ */
 function renderHome(animate){
   const rows = MODULES.map((m,i)=>{
@@ -638,13 +597,13 @@ function renderHome(animate){
       <button class="go" data-open="${m.id}">Embarcar</button>
     </div>`;
   }).join("");
- 
+
   const stamps = MODULES.map(m=>{
     const d = state.stamps[m.id];
     if(!d) return `<div class="slot">${m.emoji}<br>${esc(m.name)}<br>faça 70% no desafio</div>`;
     return `<div class="stamp" style="color:${m.color};--r:${m.rot}"><div><b>${esc(m.en)}</b><span>APPROVED</span><span>${esc(d)}</span></div></div>`;
   }).join("");
- 
+
   const count = Object.keys(state.stamps).length;
   $("#app").innerHTML = `
   <section class="hero">
@@ -678,12 +637,12 @@ function renderHome(animate){
 }
 function tick(){ const c=$("#clock"); if(c){ const d=new Date(); c.textContent = d.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"}); } }
 setInterval(tick, 30000);
- 
+
 document.addEventListener("click", e => {
   const o = e.target.closest("[data-open]");
   if(o) openModule(o.dataset.open);
 });
- 
+
 /* ============ MÓDULO ============ */
 let current = null, currentTab = null;
 function openModule(id, tab){
@@ -716,7 +675,7 @@ function renderTab(){
   else if(t==="dialogue") renderDialogue();
   else startQuiz();
 }
- 
+
 /* Vocabulário */
 function renderVocab(){
   const m = current;
@@ -757,7 +716,7 @@ function renderVocab(){
     if(n2===m.vocab.length) toast("Vocabulário completo! Agora o diálogo.");
   });
 }
- 
+
 /* Gramática */
 function gramCard(g){
   const ok = state.grammarOk[g.id];
@@ -797,7 +756,7 @@ function renderTrack(){
   document.querySelectorAll("[data-lv]").forEach(b=>b.onclick=()=>{ trackLvl=b.dataset.lv; renderTrack(); });
   bindGram();
 }
- 
+
 /* Diálogo */
 function renderDialogue(){
   const m = current;
@@ -838,7 +797,7 @@ function renderDialogue(){
     next();
   };
 }
- 
+
 /* Desafio */
 let quiz = null;
 function startQuiz(){
@@ -947,11 +906,10 @@ function resultado(){
   $("#againBtn").onclick=startQuiz;
   $("#homeBtn").onclick=()=>{ renderHome(false); window.scrollTo(0,0); };
 }
- 
+
 /* ============ INÍCIO ============ */
 renderXP();
 renderHome(true);
 </script>
 </body>
 </html>
- 
